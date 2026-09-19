@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>富國島悠閒之旅 - 行程企劃書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap');
+
+        :root {
+            --bg-color: #f7eed7; /* 泛黃羊皮紙/吉卜力復古底色 */
+            --text-color: #3e332a; /* 深棕色文字 */
+            --accent-color: #4a6741; /* 龍貓綠/森林綠 */
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --border-color: #c4b59b;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', serif; /* 襯線字體增添復古童話感 */
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            /* 加入海浪與太陽的吉卜力風海島元素底紋 */
+            background-image: url('data:image/svg+xml;utf8,<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg"><g opacity="0.08" stroke="%234a6741" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="25" cy="25" r="8" fill="%234a6741"/><path d="M25 10 L25 5 M25 40 L25 45 M10 25 L5 25 M40 25 L45 25 M14 14 L10 10 M36 36 L40 40 M14 36 L10 40 M36 14 L40 10" /><path d="M60 80 Q 75 65 90 80 T 120 80" stroke-width="3"/><path d="M50 95 Q 65 80 80 95 T 110 95" stroke-width="3"/></g></svg>'); 
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(247, 238, 215, 0.85); /* 半透明底色讓背景圖透出 */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 裝飾性邊框 */
+        .container::before, .container::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--accent-color);
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+        .container::before { top: 10px; left: 10px; border-right-color: transparent; border-bottom-color: transparent; }
+        .container::after { bottom: 10px; right: 10px; border-left-color: transparent; border-top-color: transparent; }
+
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed var(--border-color);
+        }
+
+        h1 {
+            color: var(--accent-color);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::before, h1::after {
+            content: '🍃'; /* 樹葉裝飾 */
+            font-size: 0.6em;
+            vertical-align: middle;
+            margin: 0 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #6d5b4a;
+            font-style: italic;
+        }
+
+        .timeline {
+            position: relative;
+            margin: 40px 0;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 15px;
+            width: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+            opacity: 0.6;
+        }
+
+        .day-section {
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .day-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .day-badge {
+            background-color: var(--accent-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            position: absolute;
+            left: -48px; /* 對齊時間線 */
+            z-index: 1;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            border: 3px solid var(--bg-color);
+        }
+
+        .day-title-box {
+            background: var(--card-bg);
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            margin-left: 20px;
+            flex-grow: 1;
+        }
+        
+        .day-title-box h2 {
+            margin: 0;
+            color: var(--accent-color);
+            font-size: 1.4em;
+        }
+
+        .map-wrapper {
+            position: relative;
+            width: 100%;
+            /* 調整高度以符合圖片的 9:16 比例 */
+            padding-top: 177.78%; /* 16 / 9 * 100% */
+            background-color: transparent;
+            border-radius: 20px;
+            border: 2px solid var(--border-color);
+            margin-bottom: 25px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .map-wrapper img.map-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* 確保整張圖片都能完整顯示 */
+            background-color: #dbebe6; /* 邊緣補色 */
+        }
+
+        .map-pin {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.85);
+            border: 2px solid var(--accent-color);
+            padding: 4px 8px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transform: translate(-50%, -50%);
+            backdrop-filter: blur(2px);
+        }
+
+        .map-pin:hover, .map-pin.active-pin {
+            transform: translate(-50%, -50%) scale(1.15);
+            background: rgba(247, 238, 215, 0.95);
+            z-index: 20;
+            box-shadow: 0 6px 12px rgba(74, 103, 65, 0.4);
+            border-color: #31442b;
+        }
+
+        .pin-text {
+            font-size: 0.85em;
+            font-weight: bold;
+            color: var(--text-color);
+            white-space: nowrap;
+        }
+
+        .tabs-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 12px;
+            padding: 10px 5px 20px 5px;
+            margin-bottom: 20px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-color) transparent;
+        }
+
+        .tabs-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        .tabs-container::-webkit-scrollbar-thumb {
+            background-color: var(--accent-color);
+            border-radius: 10px;
+        }
+
+        .tab-btn {
+            background: var(--card-bg);
+            border: 2px solid #d4c8b5;
+            color: #6d5b4a;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .tab-btn:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 10px rgba(74, 103, 65, 0.4);
+        }
+
+        /* 隱藏未選中的天數並加入動畫 */
+        .day-section {
+            display: none;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stay-info {
+            font-size: 0.9em;
+            color: #7a6a57;
+            margin-top: 5px;
+        }
+
+        .activity-list {
+            list-style: none;
+            padding: 0;
+            margin-left: 20px;
+        }
+
+        .activity-item {
+            background: var(--card-bg);
+            margin-bottom: 15px;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 5px solid var(--accent-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .activity-item:hover {
+            transform: translateX(5px);
+        }
+
+        .time {
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-right: 10px;
+            font-family: monospace;
+            font-size: 1.1em;
+        }
+
+        .title {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .desc {
+            color: #55483a;
+            margin-top: 5px;
+            font-size: 0.95em;
+        }
+        
+        .icon-tag {
+            font-size: 1.2em;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .tips-box {
+            background: rgba(222, 235, 219, 0.6);
+            border: 1px solid #a8bfa1;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 40px;
+            font-size: 0.95em;
+        }
+        
+        .tips-box h3 {
+            color: var(--accent-color);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+        }
+        .tips-box h3::before {
+            content: '🐈‍⬛'; /* 黑貓吉吉風格 */
+            margin-right: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .timeline { padding-left: 15px; }
+            .timeline::before { left: 5px; }
+            .day-badge { left: -32px; width: 40px; height: 40px; font-size: 1em; }
+            .day-title-box { margin-left: 10px; }
+            .activity-list { margin-left: 10px; }
+            /* 手機版地圖高度交由 padding-top 控制比例，不寫死 height */
+            .tab-btn { padding: 10px 16px; font-size: 1em; }
+            .map-pin { padding: 2px 6px; }
+            .pin-text { font-size: 0.7em; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>富國島悠閒之旅</h1>
+        <div class="subtitle">六天五夜 ‧ 海島漫遊與奇幻探險</div>
+    </header>
+
+    <div class="map-wrapper" id="interactive-map">
+        <!-- 替換為相對路徑，並加入預設佔位圖片避免破圖空白 -->
+        <img class="map-bg" src="./map.jpeg" onerror="this.src='https://placehold.co/900x1600/dbebe6/4a6741?text=Map+Image+Not+Found'" alt="富國島吉卜力風格地圖">
+
+        <!-- 地圖上的每日圖示按鈕 (重新根據圖片內容定位) -->
+        
+        <!-- 北島 (D4) - 定位在珍珠樂園/動物園附近 -->
+        <div class="map-pin" style="top: 25%; left: 35%;" data-target="day4" onclick="showDay('day4')">
+            <div class="pin-text">D4 北島樂園</div>
+        </div>
+        
+        <!-- 市區 (D5) - 定位在陽東夜市/KingKong Mart附近 -->
+        <div class="map-pin" style="top: 45%; left: 65%;" data-target="day5" onclick="showDay('day5')">
+            <div class="pin-text">D5 市區漫遊</div>
+        </div>
+
+        <!-- 機場/賦歸 (D6) - 定位在機場附近 -->
+        <div class="map-pin" style="top: 88%; left: 45%;" data-target="day6" onclick="showDay('day6')">
+            <div class="pin-text">D6 準備賦歸</div>
+        </div>
+        
+        <!-- 中南部海灘/跳島 (D3) - 定位在跳島船隻附近 -->
+        <div class="map-pin" style="top: 60%; left: 75%;" data-target="day3" onclick="showDay('day3')">
+            <div class="pin-text">D3 跳島夕陽</div>
+        </div>
+        
+        <!-- 南島 (D1) - 定位在海洋之吻/翡翠灣附近 -->
+        <div class="map-pin" style="top: 80%; left: 70%;" data-target="day1" onclick="showDay('day1')">
+            <div class="pin-text">D1 初抵南島</div>
+        </div>
+        
+        <!-- 香島 (D2) - 定位在香島水樂園附近 -->
+        <div class="map-pin" style="top: 55%; left: 18%;" data-target="day2" onclick="showDay('day2')">
+            <div class="pin-text">D2 香島冒險</div>
+        </div>
+    </div>
+
+    <div class="tabs-container" id="day-tabs">
+        <button class="tab-btn active" data-target="day1" onclick="showDay('day1')">D1 初抵南島</button>
+        <button class="tab-btn" data-target="day2" onclick="showDay('day2')">D2 香島冒險</button>
+        <button class="tab-btn" data-target="day3" onclick="showDay('day3')">D3 跳島探秘</button>
+        <button class="tab-btn" data-target="day4" onclick="showDay('day4')">D4 北島奇幻</button>
+        <button class="tab-btn" data-target="day5" onclick="showDay('day5')">D5 市區漫遊</button>
+        <button class="tab-btn" data-target="day6" onclick="showDay('day6')">D6 滿載賦歸</button>
+    </div>
+
+    <div class="timeline">
+        
+        <!-- Day 1 -->
+        <div class="day-section" id="day1" style="display: block;">
+            <div class="day-header">
+                <div class="day-badge">D1</div>
+                <div class="day-title-box">
+                    <h2>初抵南島：日落小鎮與璀璨星夜</h2>
+                    <div class="stay-info">🏡 住宿：富國翡翠灣高級公寓 (Premier Residences Phu Quoc)</div>
+                </div>
+            </div>
+            <ul class="activity-list">
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">✈️</span> <span class="time">14:00 - 15:50</span> 抵達與入境</div>
+                    <div class="desc">航班抵達富國國際機場，辦理入境手續。出境時間約為 15:50。</div>
+                </li>
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🚗</span> <span class="time">16:30 - 17:00</span> 專車接送至飯店</div>
+                    <div class="desc">搭車前往翡翠灣飯店，辦理入住並稍作整理。</div>
+                </li>
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🌅</span> <span class="time">17:30 - 20:00</span> 漫步日落小鎮 (Sunset Town)</div>
+                    <div class="desc">造訪富國島唯一星巴克，欣賞地中海風情建築，並在 Vui-Fest Bazaar 夜市慢慢享用晚餐與逛街。</div>
+                </li>
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">💆‍♀️</span> <span class="time">20:30</span> 洗頭按摩與休息</div>
+                    <div class="desc">在小鎮或飯店附近尋找店家放鬆，洗去搭機與第一天的疲憊，悠閒返回飯店。</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="day-section" id="day2">
+            <div class="day-header">
+                <div class="day-badge">D2</div>
+                <div class="day-title-box">
+                    <h2>香島冒險：水上樂園與海洋之吻</h2>
+                    <div class="stay-info">🏡 住宿：都喜公主月光沙灘度假村 (Dusit Princess Moonrise)</div>
+                </div>
+            </div>
+            <ul class="activity-list">
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🧳</span> <span class="time">09:00</span> 退房與行李寄放</div>
+                    <div class="desc">從翡翠灣退房，攜帶行李前往日落小鎮纜車站寄放（或隨車）。</div>
+                </li>
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🚠</span> <span class="time">10:00</span> 香島跨海纜車</div>
+                    <div class="desc">搭乘世界最長跨海纜車前往太陽世界自然公園 (Sunworld Hon Thom)。</div>
+                </li>
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🌊</span> <span class="time">11:00 - 15:30</span> Aquatopia 水上樂園</div>
+                    <div class="desc">在香島上盡情享受水上設施。留意纜車中午的休息時段。</div>
+                </li>
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🥩</span> <span class="time">16:30 - 18:30</span> Pho Nuong 海鮮肉類燒烤</div>
+                    <div class="desc">搭乘纜車返回日落小鎮後，享用豐盛的燒烤大餐，補充體力。</div>
+                </li>
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🎆</span> <span class="time">19:45 - 20:10</span> 海洋交響曲 (Symphony of the Sea)</div>
+                    <div class="desc">觀賞精彩的水上匯演與小型煙火秀。</div>
+                </li>
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">💋</span> <span class="time">21:00 - 21:30</span> 海洋之吻 (Kiss of the Sea)</div>
+                    <div class="desc">欣賞大型聲光水舞主秀，緊接著 21:30 觀賞最盛大的海邊煙火。</div>
+                </li>
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🏨</span> <span class="time">22:00</span> 入住都喜公主度假村</div>
+                    <div class="desc">看完煙火散場後，乘車前往中部長灘區辦理 Check-in，順便安排洗頭按摩後休息。</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Day 3 -->
+        <!-- Day 3 -->
+        <div class="day-section" id="day3">
+            <div class="day-header">
+                <div class="day-badge">D3</div>
+                <div class="day-title-box">
+                    <h2>跳島探秘：碧海藍天與絕美夕陽</h2>
+                    <div class="stay-info">🏡 住宿：都喜公主月光沙灘度假村 (Dusit Princess Moonrise)</div>
+                </div>
+            </div>
+            <ul class="activity-list">
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🏝️</span> <span class="time">08:30 - 15:30</span> 南島跳島一日遊</div>
+                    <div class="desc">搭船前往梅如島 (May Rut)、孟泰島 (Mong Tay)、甘吉島 (Gam Ghi) 浮潛與放鬆。</div>
+                </li>
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🍹</span> <span class="time">17:00</span> Ocsen Beach Bar & Club</div>
+                    <div class="desc">返回飯店梳洗後，前往知名海灘酒吧，躺在橘色懶骨頭上欣賞絕美日落。</div>
+                </li>
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🦑</span> <span class="time">19:00</span> Nha Xua 68 魷魚火鍋</div>
+                    <div class="desc">品嚐富國島特色的鮮甜魷魚火鍋。</div>
+                </li>
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">💆‍♂️</span> <span class="time">21:00</span> 洗頭按摩與休息</div>
+                    <div class="desc">飯後放鬆行程，隨後返回飯店。</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Day 4 -->
+        <div class="day-section" id="day4">
+            <div class="day-header">
+                <div class="day-badge">D4</div>
+                <div class="day-title-box">
+                    <h2>北島奇幻：野生動物與童話城堡</h2>
+                    <div class="stay-info">🏡 住宿：海貝水療飯店 (Seashells Phu Quoc Hotel)</div>
+                </div>
+            </div>
+            <ul class="activity-list">
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🏨</span> <span class="time">09:00</span> 退房換宿</div>
+                    <div class="desc">前往市區的海貝水療飯店寄放行李。</div>
+                </li>
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🦒</span> <span class="time">10:30 - 14:00</span> Safari 野生動物園</div>
+                    <div class="desc">前往北島，搭乘遊園車近距離觀賞野生動物 (Vinpearl Safari)。</div>
+                </li>
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🏰</span> <span class="time">14:30 - 16:30</span> 珍珠樂園 (VinWonders)</div>
+                    <div class="desc">體驗刺激遊樂設施與夢幻城堡。</div>
+                </li>
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🍽️</span> <span class="time">17:00 - 19:30</span> Camia Restaurant 日落晚餐</div>
+                    <div class="desc">提早離開樂園，前往評價極高的 Camia 餐廳，在海浪聲中享用浪漫晚餐並欣賞絕美日落。</div>
+                </li>
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🥖</span> <span class="time">20:30</span> Banh mi Sai Gon</div>
+                    <div class="desc">回程市區買份道地的越南法國麵包當宵夜，隨後安排洗頭按摩，返回海貝飯店。</div>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Day 5 -->
+        <!-- Day 5 -->
+        <div class="day-section" id="day5">
+            <div class="day-header">
+                <div class="day-badge">D5</div>
+                <div class="day-title-box">
+                    <h2>市區漫遊：泥漿浴放鬆與在地市集</h2>
+                    <div class="stay-info">🏡 住宿：海貝水療飯店 (Seashells Phu Quoc Hotel)</div>
+                </div>
+            </div>
+            <ul class="activity-list">
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🍜</span> <span class="time">09:00</span> 早餐：Pho Sai Gon</div>
+                    <div class="desc">以一碗熱騰騰的越南河粉開啟美好的一天。</div>
+                </li>
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🛒</span> <span class="time">10:00</span> KingKong Mart 購物</div>
+                    <div class="desc">富國島最大超市，採買伴手禮、胡椒、魚露與零食。</div>
+                </li>
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🛁</span> <span class="time">13:00</span> Versailles 泥漿浴</div>
+                    <div class="desc">享受特色泥漿浴與 SPA 放鬆身心 (Mud bath, spa & beach club)。</div>
+                </li>
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🏖️</span> <span class="time">16:00</span> 長灘踏浪與美食</div>
+                    <div class="desc">在長灘散步，品嚐 Quan An 93 海鮮與 Qun Quay Kien-Xay 鮮蝦麵。</div>
+                </li>
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🏮</span> <span class="time">19:00</span> 陽東鎮夜市 (Phu Quoc Night Market)</div>
+                    <div class="desc">體驗當地熱鬧的夜市文化，品嚐在地小吃，最後以洗頭按摩完美結束這一天。</div>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Day 6 -->
+        <div class="day-section" id="day6">
+            <div class="day-header">
+                <div class="day-badge">D6</div>
+                <div class="day-title-box">
+                    <h2>賦歸：鳥瞰富國島與滿載回憶</h2>
+                    <div class="stay-info">✈️ 航班：預計早上 8:25 啟航 (依據附檔時間)</div>
+                </div>
+            </div>
+            <ul class="activity-list">
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🛫</span> <span class="time">半夜/清晨</span> 準備返家</div>
+                    <div class="desc">半夜退房，提早前往富國國際機場，搭乘 8:25 的班機，滿載美好回憶準備返家。</div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    
+    <div class="tips-box">
+        <h3>旅途小叮嚀</h3>
+        <ul>
+            <li><b>交通安排：</b> 每日換飯店時段，建議可多利用包車服務，或與飯店確認行李寄送，減少拖著行李移動的負擔。</li>
+            <li><b>時間彈性：</b> 第四天 (D4) 北島行程較為緊湊，請留意樂園各項表演的時間，適時取捨。</li>
+            <li><b>放鬆至上：</b> 每天都安排了洗頭按摩，請盡情享受這趟充滿吉卜力悠閒氛圍的海島之旅！</li>
+        </ul>
+    </div>
+
+</div>
+
+<script>
+    function showDay(dayId) {
+        // 1. 隱藏所有的行程天數
+        const allDays = document.querySelectorAll('.day-section');
+        allDays.forEach(day => {
+            day.style.display = 'none';
+        });
+
+        // 2. 移除所有按鈕的 active 狀態
+        const allTabs = document.querySelectorAll('.tab-btn');
+        allTabs.forEach(tab => {
+            tab.classList.remove('active');
+        });
+
+        // 3. 移除地圖圖示的 active 狀態
+        const allPins = document.querySelectorAll('.map-pin');
+        allPins.forEach(pin => {
+            pin.classList.remove('active-pin');
+        });
+
+        // 4. 顯示目標天數
+        const targetDay = document.getElementById(dayId);
+        if (targetDay) {
+            targetDay.style.display = 'block';
+        }
+
+        // 5. 亮起對應的標籤按鈕
+        const targetTab = document.querySelector(`.tab-btn[data-target="${dayId}"]`);
+        if (targetTab) {
+            targetTab.classList.add('active');
+            // 讓標籤列自動捲動到可見範圍（針對手機版）
+            targetTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+
+        // 6. 亮起地圖上對應的圖示
+        const targetPin = document.querySelector(`.map-pin[data-target="${dayId}"]`);
+        if (targetPin) {
+            targetPin.classList.add('active-pin');
+        }
+
+        // 7. 將畫面平滑捲動到行程標題處 (留一點頂部空間)
+        const tabsContainer = document.getElementById('day-tabs');
+        if (tabsContainer) {
+            const yOffset = -20; 
+            const y = tabsContainer.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({top: y, behavior: 'smooth'});
+        }
+    }
+    
+    // 初始化：確保 D1 被選中（以防重新整理）
+    window.onload = function() {
+        showDay('day1');
+    };
+</script>
+
+</body>
+</html>
