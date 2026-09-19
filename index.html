@@ -147,8 +147,8 @@
         .map-wrapper {
             position: relative;
             width: 100%;
-            /* 調整高度以符合圖片的 9:16 比例 */
-            padding-top: 177.78%; /* 16 / 9 * 100% */
+            /* 根據截圖尺寸 572x1024 調整比例 (1024 / 572 * 100%) */
+            padding-top: 179%; 
             background-color: transparent;
             border-radius: 20px;
             border: 2px solid var(--border-color);
@@ -348,8 +348,8 @@
     </header>
 
     <div class="map-wrapper" id="interactive-map">
-        <!-- 替換為相對路徑，並加入預設佔位圖片避免破圖空白 -->
-        <img class="map-bg" src="./map.jpeg" onerror="this.src='https://placehold.co/900x1600/dbebe6/4a6741?text=Map+Image+Not+Found'" alt="富國島吉卜力風格地圖">
+        <!-- 確保這個 HTML 檔案和 map.jpeg 放在同一個資料夾 -->
+        <img class="map-bg" src="map.jpeg" alt="富國島吉卜力風格地圖">
 
         <!-- 地圖上的每日圖示按鈕 (重新根據圖片內容定位) -->
         
