@@ -54,7 +54,7 @@
 
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             padding-bottom: 20px;
             border-bottom: 2px dashed var(--border-color);
         }
@@ -79,7 +79,57 @@
             font-size: 1.2em;
             color: #6d5b4a;
             font-style: italic;
+            margin-bottom: 15px;
         }
+
+        /* 記帳本按鈕樣式 */
+        .accounting-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1em;
+            box-shadow: 0 4px 6px rgba(74, 103, 65, 0.3);
+            transition: all 0.3s ease;
+        }
+        .accounting-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(74, 103, 65, 0.4);
+            background-color: #3a5333;
+        }
+        .accounting-btn .icon-tag {
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+
+        /* 憑證與連結按鈕樣式 */
+        .voucher-btn, .map-btn, .guide-btn {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 10px;
+            margin-right: 8px; /* 預留多個按鈕並排的間距 */
+            padding: 6px 14px;
+            background-color: rgba(247, 238, 215, 0.8);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .voucher-btn:hover, .map-btn:hover, .guide-btn:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        .voucher-btn::before { content: '📎'; margin-right: 5px; }
+        .map-btn::before { content: '📍'; margin-right: 5px; }
+        .guide-btn::before { content: '📖'; margin-right: 5px; }
 
         .timeline {
             position: relative;
@@ -165,6 +215,7 @@
             height: 100%;
             object-fit: contain; /* 確保整張圖片都能完整顯示 */
             background-color: #dbebe6; /* 邊緣補色 */
+            z-index: 1; /* 確保圖片在最底層 */
         }
 
         .map-pin {
@@ -345,52 +396,57 @@
     <header>
         <h1>富國島悠閒之旅</h1>
         <div class="subtitle">六天五夜 ‧ 海島漫遊與奇幻探險</div>
+        
+        <!-- 共同記帳本按鈕 -->
+        <a href="https://app.lightsplit.com/g/7GzBpdx1DpUYgSr4nxXFcT" target="_blank" class="accounting-btn">
+            <span class="icon-tag">💰</span> 點此進入共同記帳本
+        </a>
     </header>
 
     <div class="map-wrapper" id="interactive-map">
         <!-- 確保這個 HTML 檔案和 map.jpeg 放在同一個資料夾 -->
-        <img class="map-bg" src="map.jpeg" alt="富國島吉卜力風格地圖">
+        <img class="map-bg" src="./map.jpeg" alt="富國島吉卜力風格地圖">
 
         <!-- 地圖上的每日圖示按鈕 (重新根據圖片內容定位) -->
         
-        <!-- 北島 (D4) - 定位在珍珠樂園/動物園附近 -->
-        <div class="map-pin" style="top: 25%; left: 35%;" data-target="day4" onclick="showDay('day4')">
+        <!-- 北島 (D4) -->
+        <div class="map-pin" style="top: 20%; left: 40%;" data-target="day4" onclick="showDay('day4')">
             <div class="pin-text">D4 北島樂園</div>
         </div>
         
-        <!-- 市區 (D5) - 定位在陽東夜市/KingKong Mart附近 -->
-        <div class="map-pin" style="top: 45%; left: 65%;" data-target="day5" onclick="showDay('day5')">
+        <!-- 市區 (D5) -->
+        <div class="map-pin" style="top: 45%; left: 30%;" data-target="day5" onclick="showDay('day5')">
             <div class="pin-text">D5 市區漫遊</div>
         </div>
 
-        <!-- 機場/賦歸 (D6) - 定位在機場附近 -->
-        <div class="map-pin" style="top: 88%; left: 45%;" data-target="day6" onclick="showDay('day6')">
+        <!-- 機場/賦歸 (D6) -->
+        <div class="map-pin" style="top: 55%; left: 55%;" data-target="day6" onclick="showDay('day6')">
             <div class="pin-text">D6 準備賦歸</div>
         </div>
         
-        <!-- 中南部海灘/跳島 (D3) - 定位在跳島船隻附近 -->
-        <div class="map-pin" style="top: 60%; left: 75%;" data-target="day3" onclick="showDay('day3')">
+        <!-- 中南部海灘/跳島 (D3) -->
+        <div class="map-pin" style="top: 70%; left: 60%;" data-target="day3" onclick="showDay('day3')">
             <div class="pin-text">D3 跳島夕陽</div>
         </div>
         
-        <!-- 南島 (D1) - 定位在海洋之吻/翡翠灣附近 -->
-        <div class="map-pin" style="top: 80%; left: 70%;" data-target="day1" onclick="showDay('day1')">
+        <!-- 南島 (D1) -->
+        <div class="map-pin" style="top: 85%; left: 50%;" data-target="day1" onclick="showDay('day1')">
             <div class="pin-text">D1 初抵南島</div>
         </div>
         
-        <!-- 香島 (D2) - 定位在香島水樂園附近 -->
-        <div class="map-pin" style="top: 55%; left: 18%;" data-target="day2" onclick="showDay('day2')">
+        <!-- 香島 (D2) -->
+        <div class="map-pin" style="top: 90%; left: 30%;" data-target="day2" onclick="showDay('day2')">
             <div class="pin-text">D2 香島冒險</div>
         </div>
     </div>
 
     <div class="tabs-container" id="day-tabs">
-        <button class="tab-btn active" data-target="day1" onclick="showDay('day1')">D1 初抵南島</button>
-        <button class="tab-btn" data-target="day2" onclick="showDay('day2')">D2 香島冒險</button>
-        <button class="tab-btn" data-target="day3" onclick="showDay('day3')">D3 跳島探秘</button>
-        <button class="tab-btn" data-target="day4" onclick="showDay('day4')">D4 北島奇幻</button>
-        <button class="tab-btn" data-target="day5" onclick="showDay('day5')">D5 市區漫遊</button>
-        <button class="tab-btn" data-target="day6" onclick="showDay('day6')">D6 滿載賦歸</button>
+        <button class="tab-btn active" data-target="day1" onclick="showDay('day1')">D1 (11/26)</button>
+        <button class="tab-btn" data-target="day2" onclick="showDay('day2')">D2 (11/27)</button>
+        <button class="tab-btn" data-target="day3" onclick="showDay('day3')">D3 (11/28)</button>
+        <button class="tab-btn" data-target="day4" onclick="showDay('day4')">D4 (11/29)</button>
+        <button class="tab-btn" data-target="day5" onclick="showDay('day5')">D5 (11/30)</button>
+        <button class="tab-btn" data-target="day6" onclick="showDay('day6')">D6 (12/01)</button>
     </div>
 
     <div class="timeline">
@@ -400,18 +456,22 @@
             <div class="day-header">
                 <div class="day-badge">D1</div>
                 <div class="day-title-box">
-                    <h2>初抵南島：日落小鎮與璀璨星夜</h2>
-                    <div class="stay-info">🏡 住宿：富國翡翠灣高級公寓 (Premier Residences Phu Quoc)</div>
+                    <h2>11/26 初抵南島：日落小鎮與璀璨星夜</h2>
+                    <div class="stay-info">🏡 住宿：富國島日落鎮特曼托酒店 (Sunset Town Temanto Hotel)</div>
                 </div>
             </div>
             <ul class="activity-list">
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">✈️</span> <span class="time">14:00 - 15:50</span> 抵達與入境</div>
                     <div class="desc">航班抵達富國國際機場，辦理入境手續。出境時間約為 15:50。</div>
+                    <!-- 這裡把 href="#" 的 # 換成機票憑證連結 -->
+                    <a href="#" target="_blank" class="voucher-btn">查看機票憑證</a>
                 </li>
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">🚗</span> <span class="time">16:30 - 17:00</span> 專車接送至飯店</div>
-                    <div class="desc">搭車前往翡翠灣飯店，辦理入住並稍作整理。</div>
+                    <div class="desc">搭車前往特曼托酒店，辦理入住並稍作整理。</div>
+                    <!-- 這裡把 href="#" 的 # 換成飯店憑證連結 -->
+                    <a href="飯店憑證連結" target="_blank" class="voucher-btn">查看飯店入住憑證</a>
                 </li>
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">🌅</span> <span class="time">17:30 - 20:00</span> 漫步日落小鎮 (Sunset Town)</div>
@@ -429,22 +489,20 @@
             <div class="day-header">
                 <div class="day-badge">D2</div>
                 <div class="day-title-box">
-                    <h2>香島冒險：水上樂園與海洋之吻</h2>
-                    <div class="stay-info">🏡 住宿：都喜公主月光沙灘度假村 (Dusit Princess Moonrise)</div>
+                    <h2>11/27 香島冒險：水上樂園與海洋之吻</h2>
+                    <div class="stay-info">🏡 住宿：富國島日落鎮特曼托酒店 (Sunset Town Temanto Hotel)</div>
                 </div>
             </div>
             <ul class="activity-list">
                 <li class="activity-item">
-                    <div class="title"><span class="icon-tag">🧳</span> <span class="time">09:00</span> 退房與行李寄放</div>
-                    <div class="desc">從翡翠灣退房，攜帶行李前往日落小鎮纜車站寄放（或隨車）。</div>
-                </li>
-                <li class="activity-item">
                     <div class="title"><span class="icon-tag">🚠</span> <span class="time">10:00</span> 香島跨海纜車</div>
-                    <div class="desc">搭乘世界最長跨海纜車前往太陽世界自然公園 (Sunworld Hon Thom)。</div>
+                    <div class="desc">從飯店出發，前往安泰港 (An Thoi) 纜車站，搭乘世界最長跨海纜車前往太陽世界自然公園。</div>
+                    <a href="https://maps.app.goo.gl/53kJ4Hdqp1Vc61qE8" target="_blank" class="map-btn">查看安泰港地圖</a>
                 </li>
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">🌊</span> <span class="time">11:00 - 15:30</span> Aquatopia 水上樂園</div>
                     <div class="desc">在香島上盡情享受水上設施。留意纜車中午的休息時段。</div>
+                    <a href="https://bobowin.blog/sunworld-nature-park/#%E5%AF%8C%E5%9C%8B%E5%B3%B6%E5%A4%AA%E9%99%BD%E4%B8%96%E7%95%8C%E8%87%AA%E7%84%B6%E5%85%AC%E5%9C%92%EF%BD%9C%E5%9C%92%E5%8D%80%E5%9C%B0%E5%9C%96%E4%BB%8B%E7%B4%B9" target="_blank" class="guide-btn">查看水上樂園攻略</a>
                 </li>
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">🥩</span> <span class="time">16:30 - 18:30</span> Pho Nuong 海鮮肉類燒烤</div>
@@ -457,32 +515,45 @@
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">💋</span> <span class="time">21:00 - 21:30</span> 海洋之吻 (Kiss of the Sea)</div>
                     <div class="desc">欣賞大型聲光水舞主秀，緊接著 21:30 觀賞最盛大的海邊煙火。</div>
+                    <!-- 這裡把 href="#" 的 # 換成門票憑證連結 -->
+                    <a href="#" target="_blank" class="voucher-btn">查看展演門票憑證</a>
                 </li>
                 <li class="activity-item">
-                    <div class="title"><span class="icon-tag">🏨</span> <span class="time">22:00</span> 入住都喜公主度假村</div>
-                    <div class="desc">看完煙火散場後，乘車前往中部長灘區辦理 Check-in，順便安排洗頭按摩後休息。</div>
+                    <div class="title"><span class="icon-tag">💆‍♂️</span> <span class="time">22:00</span> 洗頭按摩與休息</div>
+                    <div class="desc">看完煙火散場後，順便安排洗頭按摩後步行或搭車返回特曼托飯店休息。</div>
                 </li>
             </ul>
         </div>
 
         <!-- Day 3 -->
-        <!-- Day 3 -->
         <div class="day-section" id="day3">
             <div class="day-header">
                 <div class="day-badge">D3</div>
                 <div class="day-title-box">
-                    <h2>跳島探秘：碧海藍天與絕美夕陽</h2>
-                    <div class="stay-info">🏡 住宿：都喜公主月光沙灘度假村 (Dusit Princess Moonrise)</div>
+                    <h2>11/28 跳島探秘：碧海藍天與絕美夕陽</h2>
+                    <div class="stay-info">🏡 住宿：富國島珊瑚灣渡假酒店 (Coral Bay Resort Phu Quoc)</div>
                 </div>
             </div>
             <ul class="activity-list">
                 <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🧳</span> <span class="time">08:00</span> 退房與行李隨車</div>
+                    <div class="desc">從特曼托酒店退房，將行李帶上跳島專車或請司機協助運送至新飯店。</div>
+                </li>
+                <li class="activity-item">
                     <div class="title"><span class="icon-tag">🏝️</span> <span class="time">08:30 - 15:30</span> 南島跳島一日遊</div>
                     <div class="desc">搭船前往梅如島 (May Rut)、孟泰島 (Mong Tay)、甘吉島 (Gam Ghi) 浮潛與放鬆。</div>
+                    <!-- 這裡把 href="#" 的 # 換成跳島憑證連結 -->
+                    <a href="#" target="_blank" class="voucher-btn">查看跳島行程憑證</a>
+                </li>
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🏨</span> <span class="time">16:00</span> 入住珊瑚灣渡假酒店</div>
+                    <div class="desc">前往中部長灘區辦理 Check-in，稍作梳洗。</div>
+                    <!-- 這裡把 href="#" 的 # 換成飯店憑證連結 -->
+                    <a href="度假村憑證連結" target="_blank" class="voucher-btn">查看飯店入住憑證</a>
                 </li>
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">🍹</span> <span class="time">17:00</span> Ocsen Beach Bar & Club</div>
-                    <div class="desc">返回飯店梳洗後，前往知名海灘酒吧，躺在橘色懶骨頭上欣賞絕美日落。</div>
+                    <div class="desc">前往知名海灘酒吧，躺在橘色懶骨頭上欣賞絕美日落。</div>
                 </li>
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">🦑</span> <span class="time">19:00</span> Nha Xua 68 魷魚火鍋</div>
@@ -500,18 +571,14 @@
             <div class="day-header">
                 <div class="day-badge">D4</div>
                 <div class="day-title-box">
-                    <h2>北島奇幻：野生動物與童話城堡</h2>
-                    <div class="stay-info">🏡 住宿：海貝水療飯店 (Seashells Phu Quoc Hotel)</div>
+                    <h2>11/29 北島奇幻：野生動物與童話城堡</h2>
+                    <div class="stay-info">🏡 住宿：富國島珊瑚灣渡假酒店 (Coral Bay Resort Phu Quoc)</div>
                 </div>
             </div>
             <ul class="activity-list">
                 <li class="activity-item">
-                    <div class="title"><span class="icon-tag">🏨</span> <span class="time">09:00</span> 退房換宿</div>
-                    <div class="desc">前往市區的海貝水療飯店寄放行李。</div>
-                </li>
-                <li class="activity-item">
-                    <div class="title"><span class="icon-tag">🦒</span> <span class="time">10:30 - 14:00</span> Safari 野生動物園</div>
-                    <div class="desc">前往北島，搭乘遊園車近距離觀賞野生動物 (Vinpearl Safari)。</div>
+                    <div class="title"><span class="icon-tag">🦒</span> <span class="time">09:30 - 14:00</span> Safari 野生動物園</div>
+                    <div class="desc">出發前往北島，搭乘遊園車近距離觀賞野生動物 (Vinpearl Safari)。</div>
                 </li>
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">🏰</span> <span class="time">14:30 - 16:30</span> 珍珠樂園 (VinWonders)</div>
@@ -520,22 +587,22 @@
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">🍽️</span> <span class="time">17:00 - 19:30</span> Camia Restaurant 日落晚餐</div>
                     <div class="desc">提早離開樂園，前往評價極高的 Camia 餐廳，在海浪聲中享用浪漫晚餐並欣賞絕美日落。</div>
+                    <a href="餐廳憑證連結" target="_blank" class="voucher-btn">查看餐廳訂位憑證</a>
                 </li>
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">🥖</span> <span class="time">20:30</span> Banh mi Sai Gon</div>
-                    <div class="desc">回程市區買份道地的越南法國麵包當宵夜，隨後安排洗頭按摩，返回海貝飯店。</div>
+                    <div class="desc">回程市區買份道地的越南法國麵包當宵夜，隨後安排洗頭按摩，返回珊瑚灣飯店。</div>
                 </li>
             </ul>
         </div>
         
         <!-- Day 5 -->
-        <!-- Day 5 -->
         <div class="day-section" id="day5">
             <div class="day-header">
                 <div class="day-badge">D5</div>
                 <div class="day-title-box">
-                    <h2>市區漫遊：泥漿浴放鬆與在地市集</h2>
-                    <div class="stay-info">🏡 住宿：海貝水療飯店 (Seashells Phu Quoc Hotel)</div>
+                    <h2>11/30 市區漫遊：泥漿浴放鬆與在地市集</h2>
+                    <div class="stay-info">🏡 住宿：富國島珊瑚灣渡假酒店 (Coral Bay Resort Phu Quoc)</div>
                 </div>
             </div>
             <ul class="activity-list">
@@ -567,14 +634,14 @@
             <div class="day-header">
                 <div class="day-badge">D6</div>
                 <div class="day-title-box">
-                    <h2>賦歸：鳥瞰富國島與滿載回憶</h2>
+                    <h2>12/01 賦歸：鳥瞰富國島與滿載回憶</h2>
                     <div class="stay-info">✈️ 航班：預計早上 8:25 啟航 (依據附檔時間)</div>
                 </div>
             </div>
             <ul class="activity-list">
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">🛫</span> <span class="time">半夜/清晨</span> 準備返家</div>
-                    <div class="desc">半夜退房，提早前往富國國際機場，搭乘 8:25 的班機，滿載美好回憶準備返家。</div>
+                    <div class="desc">半夜從珊瑚灣渡假酒店退房，提早前往富國國際機場，搭乘 8:25 的班機，滿載美好回憶準備返家。</div>
                 </li>
             </ul>
         </div>
