@@ -404,39 +404,39 @@
     </header>
 
     <div class="map-wrapper" id="interactive-map">
-        <!-- 確保這個 HTML 檔案和 map.jpeg 放在同一個資料夾 -->
+        <!-- 載入您更新後的吉卜力風格地圖圖片 -->
         <img class="map-bg" src="./map.jpeg" alt="富國島吉卜力風格地圖">
 
-        <!-- 地圖上的每日圖示按鈕 (重新根據圖片內容定位) -->
+        <!-- 地圖上的每日圖示按鈕 (已依照新版地圖景點位置重新定位) -->
         
-        <!-- 北島 (D5) -->
-        <div class="map-pin" style="top: 20%; left: 40%;" data-target="day5" onclick="showDay('day5')">
+        <!-- 北島 (D5) - 定位在左上角 Safari 野生動物園附近 -->
+        <div class="map-pin" style="top: 22%; left: 28%;" data-target="day5" onclick="showDay('day5')">
             <div class="pin-text">D5 北島動物園</div>
         </div>
         
-        <!-- 市區 (D4) -->
-        <div class="map-pin" style="top: 45%; left: 30%;" data-target="day4" onclick="showDay('day4')">
+        <!-- 市區 (D4) - 定位在中間偏右 KingKong Mart 與泥浴附近 -->
+        <div class="map-pin" style="top: 39%; left: 56%;" data-target="day4" onclick="showDay('day4')">
             <div class="pin-text">D4 市區漫遊</div>
         </div>
 
-        <!-- 機場/賦歸 (D6) -->
-        <div class="map-pin" style="top: 55%; left: 55%;" data-target="day6" onclick="showDay('day6')">
-            <div class="pin-text">D6 準備賦歸</div>
+        <!-- 香島 (D2) - 定位在左側香島 Aquatopia 水樂園上 -->
+        <div class="map-pin" style="top: 56%; left: 18%;" data-target="day2" onclick="showDay('day2')">
+            <div class="pin-text">D2 香島冒險</div>
         </div>
         
-        <!-- 中南部海灘/跳島 (D3) -->
-        <div class="map-pin" style="top: 70%; left: 60%;" data-target="day3" onclick="showDay('day3')">
+        <!-- 中南部海灘/跳島 (D3) - 定位在右側跳島小船與離島附近 -->
+        <div class="map-pin" style="top: 58%; left: 75%;" data-target="day3" onclick="showDay('day3')">
             <div class="pin-text">D3 跳島夕陽</div>
         </div>
         
-        <!-- 南島 (D1) -->
-        <div class="map-pin" style="top: 85%; left: 50%;" data-target="day1" onclick="showDay('day1')">
+        <!-- 南島 (D1) - 定位在下方日落小鎮與特曼托酒店附近 -->
+        <div class="map-pin" style="top: 78%; left: 55%;" data-target="day1" onclick="showDay('day1')">
             <div class="pin-text">D1 初抵南島</div>
         </div>
         
-        <!-- 香島 (D2) -->
-        <div class="map-pin" style="top: 90%; left: 30%;" data-target="day2" onclick="showDay('day2')">
-            <div class="pin-text">D2 香島冒險</div>
+        <!-- 機場/賦歸 (D6) - 定位在地圖中間富國國際機場附近 -->
+        <div class="map-pin" style="top: 54%; left: 50%;" data-target="day6" onclick="showDay('day6')">
+            <div class="pin-text">D6 準備賦歸</div>
         </div>
     </div>
 
@@ -472,6 +472,7 @@
                     <div class="desc">搭車前往特曼托酒店，辦理入住並稍作整理。</div>
                     <!-- 這裡把 href="#" 的 # 換成飯店憑證連結 -->
                     <a href="hotelday1.pdf" target="_blank" class="voucher-btn">查看飯店入住憑證</a>
+                    <a href="https://maps.app.goo.gl/hn4hohN2GJchEtGj9" target="_blank" class="map-btn">查看特曼托飯店地圖</a>
                 </li>
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">🌅</span> <span class="time">17:30 - 20:00</span> 漫步日落小鎮 (Sunset Town)</div>
@@ -509,6 +510,7 @@
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">🎆</span> <span class="time">19:45 - 20:10</span> 海洋交響曲 (Symphony of the Sea)</div>
                     <div class="desc">觀賞精彩的水上匯演與小型煙火秀。</div>
+                    <a href="https://maps.app.goo.gl/uLEDJQhTxRvsmw9A6" target="_blank" class="map-btn">查看海洋交響曲地圖</a>
                 </li>
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">💋</span> <span class="time">21:00 - 21:30</span> 海洋之吻 (Kiss of the Sea)</div>
@@ -517,7 +519,7 @@
                     <a href="kissofsea.pdf" target="_blank" class="voucher-btn">查看展演門票憑證</a>
                 </li>
                 <li class="activity-item">
-                    <div class="title"><span class="icon-tag">🏨</span> <span class="time">22:00</span> 入住都喜公主度假村</div>
+                    <div class="title"><span class="icon-tag">🏨</span> <span class="time">22:00</span> 返回特曼托飯店</div>
                     <div class="desc">看完煙火散場後，順便安排洗頭按摩後步行或搭車返回特曼托飯店休息。</div>
                 </li>
             </ul>
@@ -529,7 +531,7 @@
             <div class="day-header">
                 <div class="day-badge">D3</div>
                 <div class="day-title-box">
-                    <h2>跳島探秘：碧海藍天與絕美夕陽</h2>
+                    <h2>11/28 跳島探秘：碧海藍天與夜市漫遊</h2>
                     <div class="stay-info">🏡 住宿：富國島珊瑚灣渡假酒店 (Coral Bay Resort Phu Quoc)</div>
                 </div>
             </div>
@@ -541,8 +543,6 @@
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">🏝️</span> <span class="time">08:30 - 15:30</span> 南島跳島一日遊</div>
                     <div class="desc">搭船前往梅如島 (May Rut)、孟泰島 (Mong Tay)、甘吉島 (Gam Ghi) 浮潛與放鬆。</div>
-                    <!-- 這裡換上您的跳島憑證 -->
-                    <a href="跳島憑證連結.pdf" target="_blank" class="voucher-btn">查看跳島行程憑證</a>
                 </li>
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">🏨</span> <span class="time">16:00</span> 領取行李並入住新飯店</div>
@@ -550,12 +550,9 @@
                     <a href="hotelday2.pdf" target="_blank" class="voucher-btn">查看飯店入住憑證</a>
                 </li>
                 <li class="activity-item">
-                    <div class="title"><span class="icon-tag">🍹</span> <span class="time">17:00</span> Ocsen Beach Bar & Club</div>
-                    <div class="desc">返回飯店梳洗後，前往知名海灘酒吧，躺在橘色懶骨頭上欣賞絕美日落。</div>
-                </li>
-                <li class="activity-item">
-                    <div class="title"><span class="icon-tag">🦑</span> <span class="time">19:00</span> Nha Xua 68 魷魚火鍋</div>
-                    <div class="desc">品嚐富國島特色的鮮甜魷魚火鍋。</div>
+                    <div class="title"><span class="icon-tag">🏮</span> <span class="time">18:00</span> 陽東鎮夜市 (Phu Quoc Night Market)</div>
+                    <div class="desc">體驗當地熱鬧的夜市文化，品嚐 Quan An 93 海鮮與 Qun Quay Kien-Xay 鮮蝦麵等在地小吃。</div>
+                    <a href="https://maps.app.goo.gl/sBSPyzLEbSnN4QyMA" target="_blank" class="map-btn">查看陽東鎮夜市地圖</a>
                 </li>
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">💆‍♂️</span> <span class="time">21:00</span> 洗頭按摩與休息</div>
@@ -583,11 +580,13 @@
                     <div class="title"><span class="icon-tag">🛒</span> <span class="time">10:00</span> KingKong Mart 購物</div>
                     <div class="desc">富國島最大超市，採買伴手禮、胡椒、魚露與零食。</div>
                     <a href="https://starworldtour.com/archives/2774" target="_blank" class="guide-btn">查看購物攻略</a>
+                    <a href="https://maps.app.goo.gl/X1weHyvN73VqKxm49" target="_blank" class="map-btn">查看 KingKong Mart 地圖</a>
                 </li>
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">🛁</span> <span class="time">13:00</span> Versailles 泥漿浴</div>
                     <div class="desc">享受特色泥漿浴與 SPA 放鬆身心 (Mud bath, spa & beach club)。</div>
-                    <a href="泥漿浴憑證連結.pdf" target="_blank" class="voucher-btn">查看泥漿浴憑證</a>
+                    <a href="bath.pdf" target="_blank" class="voucher-btn">查看泥漿浴憑證</a>
+                    <a href="https://maps.app.goo.gl/mXLvvzXyHDEwiG7T7" target="_blank" class="map-btn">查看泥漿浴地圖</a>
                 </li>
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">🏖️</span> <span class="time">15:30</span> 長灘踏浪</div>
@@ -597,6 +596,7 @@
                     <div class="title"><span class="icon-tag">🍽️</span> <span class="time">17:00 - 19:30</span> Camia Restaurant 日落晚餐</div>
                     <div class="desc">前往評價極高的 Camia 餐廳，在海浪聲中享用浪漫晚餐並欣賞絕美日落。</div>
                     <a href="camia.pdf" target="_blank" class="voucher-btn">查看餐廳訂位憑證</a>
+                    <a href="https://maps.app.goo.gl/BWRQc5dxgpx6DNzA9" target="_blank" class="map-btn">查看 Camia 餐廳地圖</a>
                 </li>
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">🥖</span> <span class="time">20:30</span> Banh mi Sai Gon</div>
@@ -610,24 +610,29 @@
             <div class="day-header">
                 <div class="day-badge">D5</div>
                 <div class="day-title-box">
-                    <h2>11/30 北島奇幻：野生動物與熱鬧夜市</h2>
+                    <h2>11/30 北島奇幻：野生動物與海灘夕陽</h2>
                     <div class="stay-info">🏡 住宿：富國島珊瑚灣渡假酒店 (Coral Bay Resort Phu Quoc)</div>
                 </div>
             </div>
             <ul class="activity-list">
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">🦒</span> <span class="time">09:30 - 14:00</span> Safari 野生動物園</div>
-                    <div class="desc">前往北島，搭乘遊園車近距離觀賞野生動物 (Vinpearl Safari)。</div>
+                    <div class="desc">前往北島，搭乘遊園車近距離觀賞野生動物 (Vinpearl Safari)。<br><strong>※ 備註：行車時間約 50 分鐘，需提早預備時間出發。</strong></div>
                     <a href="https://bobowin.blog/vinpearl-safari-phu-quoc/" target="_blank" class="guide-btn">查看野生動物園攻略</a>
                     <a href="zoo.pdf" target="_blank" class="voucher-btn">查看門票憑證</a>
+                    <a href="https://maps.app.goo.gl/BPfnD3q27mtUty5B7" target="_blank" class="map-btn">查看動物園地圖</a>
                 </li>
                 <li class="activity-item">
                     <div class="title"><span class="icon-tag">🏖️</span> <span class="time">15:00</span> 飯店休息與自由活動</div>
                     <div class="desc">從北島返回飯店稍作休息，或在飯店周圍的海灘享受悠閒時光。</div>
                 </li>
                 <li class="activity-item">
-                    <div class="title"><span class="icon-tag">🏮</span> <span class="time">18:00</span> 陽東鎮夜市 (Phu Quoc Night Market)</div>
-                    <div class="desc">體驗當地熱鬧的夜市文化，品嚐 Quan An 93 海鮮與 Qun Quay Kien-Xay 鮮蝦麵等在地小吃，最後以洗頭按摩完美結束這一天。</div>
+                    <div class="title"><span class="icon-tag">🍹</span> <span class="time">17:00</span> Ocsen Beach Bar & Club</div>
+                    <div class="desc">前往知名海灘酒吧，躺在橘色懶骨頭上欣賞絕美日落。</div>
+                </li>
+                <li class="activity-item">
+                    <div class="title"><span class="icon-tag">🦑</span> <span class="time">19:00</span> Nha Xua 68 魷魚火鍋</div>
+                    <div class="desc">品嚐富國島特色的鮮甜魷魚火鍋，飯後可安排洗頭按摩完美結束這一天。</div>
                 </li>
             </ul>
         </div>
